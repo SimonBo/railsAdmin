@@ -29,3 +29,7 @@
           </div> <!-- .row -->
 
     </div> <!-- .container -->
+<% content_for :aside do %>
+  <%= render 'sidebar_popular' %>
+  <%= render 'sidebar_categories' %>
+<% end %>
