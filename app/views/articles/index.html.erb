@@ -1,33 +1,31 @@
-<h1>Listing articles</h1>
+<div class="container">
+<h1>NEWS</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <th>Excerpt</th>
-      <th>Category</th>
-      <th>Author</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <div class="row">
+      <% @articles.each do |article| %>
 
-  <tbody>
-    <% @articles.each do |article| %>
-      <tr>
-        <td><%= article.title %></td>
-        <td><%= article.content %></td>
-        <td><%= article.excerpt %></td>
-        <td><%= article.category %></td>
-        <td><%= article.author %></td>
-        <td><%= link_to 'Show', article %></td>
-        <td><%= link_to 'Edit', edit_article_path(article) %></td>
-        <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+        <div class="col-sm-3">
+          <h2><%= article.title %></h2> 
+      
+          <p><%= article.excerpt %></p> 
+        
+         
+            <%= link_to article do %>
+              <button type="button" class="btn btn-primary btn-sm">Show
+              </button>
+            <% end %>
+            <%= link_to edit_article_path(article) do %>
+              <button type="button" class="btn btn-success btn-sm">Edit
+              </button>
+            <% end %>
+            <%= link_to article, method: :delete, data: { confirm: 'Are you sure?' }  do %>
+              <button type="button" class="btn btn-danger btn-sm">Delete
+              </button>
+            <% end %>
+            
+        </div>
+        
     <% end %>
-  </tbody>
-</table>
+          </div> <!-- .row -->
 
-<br>
-
-<%= link_to 'New Article', new_article_path %>
+    </div> <!-- .container -->

@@ -1,30 +1,32 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
+<main>
+<h2>
+  <!-- <h2>Title:</h2> -->
   <%= @article.title %>
-</p>
-
+</h2>
 <p>
-  <strong>Content:</strong>
+  <h4>Excerpt:</h4>
+  <%= @article.excerpt %>
+</p>
+<p>
+  <!-- <h2>Text:</h2> -->
   <%= @article.content %>
 </p>
 
-<p>
-  <strong>Excerpt:</strong>
-  <%= @article.excerpt %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @article.category %>
-</p>
-
-<p>
-  <strong>Author:</strong>
-  <%= @article.author %>
-</p>
 
 
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>
+
+
+ 
+<%= link_to  edit_article_path(@article) do %>
+  <button type="button" class="btn btn-success btn-sm">Edit Article
+  </button>
+<% end %>
+<%= link_to articles_path do %>
+  <button type="button" class="btn btn-warning btn-sm">Back to Articles</button>
+<% end %>
+</main>
+
+<% content_for :aside do %>
+  <%= render 'sidebar_popular' %>
+  <%= render 'sidebar_categories' %>
+<% end %>

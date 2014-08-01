@@ -1,17 +1,39 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Railsadmin</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-<div id="container">
-      <% flash.each do |name, msg| %>
-        <%= content_tag :div, raw(msg), :id => "flash_#{name}" %>
-      <% end %>
-<%= yield %>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "1Canada1" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "1Canada1" %>">
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <header>
+      <%= render 'layouts/navigation' %>
+    </header>
+    <main role="main" class="container">
+      <div class="row">
+        <div class="col-sm-10 blog-main">
+          <%= render 'layouts/messages' %>
+          <%= yield %>
+        </div><!-- End of blog-main -->
+       
+    <div class="col-sm-2 blog-side">
+      <%= yield :aside %>
+    </div>
+   </div> <!-- end of row -->
+      </main>
 
-</body>
+    <footer class="container">
+      <div class="row">
+        <section class="col-sm-4">
+          Copyright 2014
+        </section>
+        <section class="col-sm-8">
+          All rights reserved.
+        </section>
+      </div>
+    </footer>
+  </body>
 </html>

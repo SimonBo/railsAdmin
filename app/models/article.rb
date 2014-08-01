@@ -1,4 +1,4 @@
 class Article < ActiveRecord::Base
-  belongs_to :category
-  belongs_to :author
+  has_many :comments, dependent: :destroy
+  has_and_belongs_to_many :categories
 end

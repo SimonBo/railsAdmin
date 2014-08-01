@@ -2,4 +2,9 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Back', articles_path %>
+<button type="button" class="btn btn-warning btn-xs"><%= link_to 'Back', articles_path %></button>
+
+<% content_for :aside do %>
+  <%= render 'sidebar_popular' %>
+  <%= render 'sidebar_categories' %>
+<% end %>

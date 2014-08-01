@@ -1,3 +1,16 @@
 // Place all the styles related to the Articles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+main {
+  @extend .container;
+  background-color: white;
+  padding-bottom: 80px;
+  width: 100%;
+  margin-top: 51px; // accommodate the navbar
+  }
+img {
+  @extend .img-responsive;
+  margin: 0 auto;
+  }
+
