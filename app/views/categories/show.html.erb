@@ -1,0 +1,12 @@
+<p>
+  <strong>Name:</strong>
+  <%= @category.name %>
+</p>
+
+<p>
+  <strong>Articles:</strong>
+  <%= @category.articles.map {|k| k.title}.join(', ') %>
+</p>
+
+<%= link_to 'Edit', edit_category_path(@candy) %> |
+<%= link_to 'Back', categories_path %>

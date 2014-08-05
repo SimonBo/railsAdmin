@@ -24,8 +24,12 @@
     <%= f.text_field :excerpt %>
   </div>
   <div class="field">
+  <%= collection_check_boxes(:article, :category_ids, @categories, :id, :name) %>
+  </div>
+
+  <div class="field">
     <%= f.label :author_id %><br>
-    <%= f.text_field :author_id %>
+    <%= f.collection_select :author_id, Author.all, :id, :first_name %>
   </div>
   <div class="actions">
     <%= f.submit %>

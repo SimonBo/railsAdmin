@@ -2,5 +2,9 @@
   <div class="panel-heading">
     <h3 class="panel-title">Browse by categories:</h3>
   </div>
- 
+  <div class="panel-body">
+    <% Category.all.each do |c| %>
+      <p><%= c.name %></p>
+    <% end %>
+  </div>
 </div>

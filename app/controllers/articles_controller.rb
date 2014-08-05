@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
-
+  before_filter :authenticate_user!, :except => [:show, :index]
   # GET /articles
   # GET /articles.json
   def index
@@ -15,10 +15,12 @@ class ArticlesController < ApplicationController
   # GET /articles/new
   def new
     @article = Article.new
+    @categories = Category.all
   end
 
   # GET /articles/1/edit
   def edit
+    @categories = Category.all
   end
 
   # POST /articles
@@ -69,6 +71,6 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:title, :content, :excerpt, :category_id, :author_id)
+      params.require(:article).permit(:title, :content, :excerpt, :author_id, :category_ids =>[])
     end
 end

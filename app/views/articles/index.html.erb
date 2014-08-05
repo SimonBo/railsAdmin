@@ -7,9 +7,16 @@
         <div class="col-sm-3">
           <h2><%= article.title %></h2> 
       
-          <p><%= article.excerpt %></p> 
-        
-         
+          <p><strong>Excerpt: </strong><%= article.excerpt %></p> 
+
+          <p><strong>Category: </strong>
+            <% article.categories.each do |c| %>
+              <p><%= c.name %></p>
+            <% end %>
+          </p> 
+
+          <p><strong>Nr of comments: </strong><%= article.comments.count %></p> 
+
             <%= link_to article do %>
               <button type="button" class="btn btn-primary btn-sm">Show
               </button>
