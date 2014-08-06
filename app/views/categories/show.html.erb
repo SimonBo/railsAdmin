@@ -1,12 +1,26 @@
-<p>
-  <strong>Name:</strong>
+<h1>
   <%= @category.name %>
-</p>
+</h1>
 
-<p>
-  <strong>Articles:</strong>
-  <%= @category.articles.map {|k| k.title}.join(', ') %>
-</p>
+<div class="row">
 
-<%= link_to 'Edit', edit_category_path(@candy) %> |
-<%= link_to 'Back', categories_path %>
+  <h2>Articles:</h2>
+    <% @category.articles.each do |article| %>
+          <%= link_to article.title, article %>
+    <% end %>
+
+</div>
+
+
+<%= link_to  edit_category_path(@category) do %>
+  <button type="button" class="btn btn-success btn-sm">Edit Category
+  </button>
+<% end %>
+<%= link_to categories_path do %>
+  <button type="button" class="btn btn-warning btn-sm">Back to Categories</button>
+<% end %>
+
+<% content_for :aside do %>
+  <%= render 'articles/sidebar_popular' %>
+  <%= render 'articles/sidebar_categories' %>
+<% end %>

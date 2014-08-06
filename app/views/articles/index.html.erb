@@ -1,17 +1,21 @@
-<div class="container">
+<div class="container-fluid">
 <h1>NEWS</h1>
-
+<% @articles.each_slice(3).to_a.each do |chunk| %>
   <div class="row">
-      <% @articles.each do |article| %>
+    
+      <% chunk.each do |article| %>
 
-        <div class="col-sm-3">
+        <div class="col-sm-4">
           <h2><%= article.title %></h2> 
-      
+          <p><strong>Author: </strong>
+            <% article.author_id do |c| %>
+              <p><%= c.first_name %></p>
+            <% end %></p> 
           <p><strong>Excerpt: </strong><%= article.excerpt %></p> 
 
           <p><strong>Category: </strong>
             <% article.categories.each do |c| %>
-              <p><%= c.name %></p>
+              <%= c.name %>
             <% end %>
           </p> 
 
@@ -31,10 +35,10 @@
             <% end %>
             
         </div>
-        
     <% end %>
+        
           </div> <!-- .row -->
-
+<% end %>
     </div> <!-- .container -->
 <% content_for :aside do %>
   <%= render 'sidebar_popular' %>

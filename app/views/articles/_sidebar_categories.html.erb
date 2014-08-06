@@ -4,7 +4,7 @@
   </div>
   <div class="panel-body">
     <% Category.all.each do |c| %>
-      <p><%= c.name %></p>
+      <p><%= link_to c.name, c %></p>
     <% end %>
   </div>
 </div>

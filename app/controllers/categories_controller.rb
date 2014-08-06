@@ -6,6 +6,8 @@ class CategoriesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.json
   def show
+    @category = Category.find(params[:id])
+    @articles = @category.articles
   end
 
   # GET /articles/new
@@ -17,6 +19,7 @@ class CategoriesController < ApplicationController
   # GET /articles/1/edit
   def edit
     @articles = Article.all
+    @category = Category.find(params[:id])
   end
 
   def create
@@ -34,6 +37,7 @@ class CategoriesController < ApplicationController
   end
  
   def update
+    @category = Category.find(params[:id])
     respond_to do |format|
       if @category.update(category_params)
         format.html { redirect_to @category, notice: 'Category was successfully updated.' }
@@ -51,6 +55,10 @@ class CategoriesController < ApplicationController
     redirect_to article_path(@article)
   end
   private
+    def set_category
+      @category = Category.find(params[:id])
+    end
+
     def category_params
       params.require(:category).permit(:name, :article_ids => [])
     end

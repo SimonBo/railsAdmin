@@ -3,7 +3,5 @@ class Category < ActiveRecord::Base
 
     validates :name, presence: true, length: { in: 2..20 }, uniqueness: true
 
-  def to_s
-    "#{name}"
-  end
+  
 end
