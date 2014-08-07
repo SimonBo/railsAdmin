@@ -20,6 +20,11 @@ RailsAdmin.config do |config|
     dashboard                     # mandatory
     index                         # mandatory
     new
+
+    multiple_upload do
+      only Article
+    end
+
     export
     bulk_delete
     show
