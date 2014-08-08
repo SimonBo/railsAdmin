@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :pictures
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  devise_for :users
+  
   # post '/articles/:id/undo', to: 'articles#undo', as: :undo
 
   # get '/articles/history', to: 'articles#history', as: :articles_history
@@ -12,8 +12,9 @@ Rails.application.routes.draw do
 
   resources :categories
   resources :authors
+  devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks' }
 
-
+  match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,5 +1,10 @@
 source 'https://rubygems.org'
 
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+gem 'omniauth-linkedin'
+
 gem 'rails_admin_multiple_upload', :path => '../rails_admin_multiple_upload'
 
 gem "paperclip", "~> 4.1"
