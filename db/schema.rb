@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140808185505) do
+ActiveRecord::Schema.define(version: 20140801222313) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -20,15 +20,6 @@ ActiveRecord::Schema.define(version: 20140808185505) do
     t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "photo_file_name"
-    t.string   "photo_content_type"
-    t.integer  "photo_file_size"
-    t.datetime "photo_updated_at"
-    t.string   "token"
-    t.string   "cover_photo_file_name"
-    t.string   "cover_photo_content_type"
-    t.integer  "cover_photo_file_size"
-    t.datetime "cover_photo_updated_at"
   end
 
   add_index "articles", ["author_id"], name: "index_articles_on_author_id"
@@ -62,27 +53,6 @@ ActiveRecord::Schema.define(version: 20140808185505) do
   add_index "comments", ["article_id"], name: "index_comments_on_article_id"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
-  create_table "identities", force: true do |t|
-    t.integer  "user_id"
-    t.string   "provider"
-    t.string   "uid"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "identities", ["user_id"], name: "index_identities_on_user_id"
-
-  create_table "pictures", force: true do |t|
-    t.integer  "article_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "article_token"
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
-  end
-
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -96,28 +66,9 @@ ActiveRecord::Schema.define(version: 20140808185505) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "name"
-    t.string   "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.string   "unconfirmed_email"
-    t.string   "provider"
-    t.string   "uid"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-
-  create_table "versions", force: true do |t|
-    t.string   "item_type",      null: false
-    t.integer  "item_id",        null: false
-    t.string   "event",          null: false
-    t.string   "whodunnit"
-    t.text     "object"
-    t.datetime "created_at"
-    t.text     "object_changes"
-  end
-
-  add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
 
 end

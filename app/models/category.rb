@@ -3,5 +3,5 @@ class Category < ActiveRecord::Base
 
     validates :name, presence: true, length: { in: 2..20 }, uniqueness: true
 
-  has_paper_trail
+  
 end

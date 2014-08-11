@@ -1,18 +1,12 @@
 Rails.application.routes.draw do
-  resources :pictures
-
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  devise_for :users,  controllers: {omniauth_callbacks: "omniauth_callbacks"}
-  # post '/articles/:id/undo', to: 'articles#undo', as: :undo
-
-  # get '/articles/history', to: 'articles#history', as: :articles_history
+  devise_for :users
   resources :articles do
     resources :comments
   end
 
   resources :categories
   resources :authors
-
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
