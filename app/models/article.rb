@@ -11,18 +11,4 @@ class Article < ActiveRecord::Base
                                   :path => ":rails_root/public/assets/articles/:id/:style/:basename.:extension",
                                   :default_url => '/images/missing_small.png'
   has_many :pictures, :dependent => :destroy
-
-  searchable do
-    text :name, :boost => 5
-    text :content, :publish_month
-    text :comments do
-      comments.map(&:content)
-    end
-    time :published_at
-    string :publish_month
-  end
-
-  def publish_month
-    published_at.strftime("%B %Y")
-  end
 end
