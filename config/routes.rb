@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :pictures
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  devise_for :users
+  devise_for :users,  controllers: {omniauth_callbacks: "omniauth_callbacks"}
   # post '/articles/:id/undo', to: 'articles#undo', as: :undo
 
   # get '/articles/history', to: 'articles#history', as: :articles_history
