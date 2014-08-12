@@ -3,12 +3,13 @@
 </h1>
 
 <div class="row">
-
-  <h2>Articles:</h2>
+<div class="list-group">
+  <h2 class="list-group-item">Articles:</h2>
+  
     <% @category.articles.each do |article| %>
-          <%= link_to article.title, article %>
+         <%= link_to article.title, article, class: "list-group-item" %>
     <% end %>
-
+</div>  
 </div>
 
 

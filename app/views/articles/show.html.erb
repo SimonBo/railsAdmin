@@ -3,15 +3,41 @@
   <!-- <h2>Title:</h2> -->
   <%= @article.title %>
 </h2>
-<p>
-  <h4>Excerpt:</h4>
-  <%= @article.excerpt %>
-</p>
+<% if @article.cover_photo.file? %>
+  <%= image_tag @article.cover_photo.url(:large) %>
+<% end %>
+
 <p>
   <!-- <h2>Text:</h2> -->
   <%= @article.content %>
 </p>
 
+<div class="row">
+
+
+
+<% unless @pictures.empty? %>
+  <% @pictures.each do |pic| %>
+    <div class='col-sm-8'>
+      <%= image_tag pic.image.url %>
+      <div class="caption">
+        <p style="text-align: center;">
+        <%= link_to "Edit", picture_path(pic) %>
+
+        <%= 
+          link_to "Delete", pic, 
+            :data => { :confirm => "Are you sure?" }, 
+            :method => :delete 
+          %>
+
+        </p>
+      </div>
+    </div>
+    
+  <% end %>
+<% end %>
+
+</div>
 <h2>Category</h2>
 <%= render @article.categories %>
 
@@ -22,6 +48,8 @@
 
 <h2>Add a comment:</h2>
 <%= render "comments/form" %>
+
+
 
 
 

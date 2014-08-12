@@ -1,7 +1,15 @@
 source 'https://rubygems.org'
 
-
+gem 'omniauth'
 gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+gem 'omniauth-linkedin'
+
+gem 'rails_admin_multiple_upload', :path => '../rails_admin_multiple_upload'
+
+gem "paperclip", "~> 4.1"
+gem 'jquery-fileupload-rails'
+gem 'paper_trail', '~> 3.0.3'
 
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'

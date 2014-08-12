@@ -7,10 +7,16 @@
 
         <div class="col-sm-4">
           <h2><%= article.title %></h2> 
-          <p><strong>Author: </strong>
-            <% article.author_id do |c| %>
-              <p><%= c.first_name %></p>
-            <% end %></p> 
+          <p><strong>Author: </strong></p>
+
+            <% if article.cover_photo.file? %>
+              <%= image_tag article.cover_photo.url(:small) %>
+            <% end %>
+          
+
+            <% article.author_id do |author| %>
+              <p><%= author.first_name %></p>
+            <% end %> 
           <p><strong>Excerpt: </strong><%= article.excerpt %></p> 
 
           <p><strong>Category: </strong>
