@@ -1,4 +1,4 @@
-<%= form_for(@author) do |f| %>
+<%= form_for @author, :html => { :multipart => true} do |f| %>
   <% if @author.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@author.errors.count, "error") %> prohibited this author from being saved:</h2>
@@ -18,6 +18,10 @@
   <div class="field">
     <%= f.label :last_name %><br>
     <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :author_photo, "Author's Photo" %>
+    <%= f.file_field :author_photo %>
   </div>
   <div class="actions">
     <%= f.submit %>

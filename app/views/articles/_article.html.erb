@@ -1,0 +1,12 @@
+<ul class="media-list">
+  <li class="media">
+    <% if article.cover_photo.file? %>
+      <%= link_to (image_tag article.cover_photo.url(:small), class: "pull-left"), article %>
+    <% end %>
+    <div class="media-body">
+      <h3 class="media-heading"><%= link_to article.title, article %></h3>
+        <h6><%= article.created_at %></h6>
+        <h4><%= article.excerpt %></h4>
+    </div>
+  </li>
+</ul>

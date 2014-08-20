@@ -6,9 +6,10 @@ Rails.application.routes.draw do
   # post '/articles/:id/undo', to: 'articles#undo', as: :undo
 
   # get '/articles/history', to: 'articles#history', as: :articles_history
-  resources :articles do
-    resources :comments
-  end
+  
+    resources :articles do
+      resources :comments
+    end
 
   resources :categories
   resources :authors
