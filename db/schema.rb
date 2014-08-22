@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140822204903) do
+ActiveRecord::Schema.define(version: 20140822205425) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20140822204903) do
     t.integer  "cover_photo_file_size"
     t.datetime "cover_photo_updated_at"
     t.integer  "visits",                   default: 0, null: false
+    t.integer  "comments_count",           default: 0, null: false
   end
 
   add_index "articles", ["author_id"], name: "index_articles_on_author_id"

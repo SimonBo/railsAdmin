@@ -19,6 +19,10 @@ class Article < ActiveRecord::Base
     self.order("visits DESC").limit(3)
   end
 
+  def self.most_comments
+    self.order("comments_count DESC").limit(5)
+  end
+
 end
 
 

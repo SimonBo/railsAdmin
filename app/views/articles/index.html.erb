@@ -1,50 +1,51 @@
 <div class="container-fluid">
-<h1>NEWS</h1>
-<%= render 'carousel' %>
-<% @articles.order(created_at: :desc).each_slice(2).to_a.each do |chunk| %>
-  <div class="row">
-    
-      <% chunk.each do |article| %>
-
-        <div class="col-sm-6">
-          <h2><%= link_to article.title, article, class: "article-title" %></h2> 
-          <%= render article.author %>
-
-            <% if article.cover_photo.file? %>
-              <%= link_to (image_tag article.cover_photo.url(:small), class: 'img-round'), article  %>
-            <% end %>
-          
-
-            
-          <h4><%= article.excerpt %></h4> 
-
-          <p><strong>Category: </strong>
-            <% article.categories.each do |c| %>
-              <%= c.name %>
-            <% end %>
-          </p> 
-
-          <h5><%= pluralize(article.comments.count, 'comment') %> </h5> 
-
+  <h1>NEWS</h1>
+  <%= render 'carousel' %>
+  <% @articles.order(created_at: :desc).each_slice(2).to_a.each do |chunk| %>
+    <div class="row">
       
+        <% chunk.each do |article| %>
 
-            <% if current_user.try(:admin?) %>
-              <%= link_to edit_article_path(article) do %>
-                <button type="button" class="btn btn-success btn-sm">Edit
-                </button>
+          <div class="col-sm-6">
+            <h2><%= link_to article.title, article, class: "article-title" %></h2> 
+            <%= render article.author %>
+
+              <% if article.cover_photo.file? %>
+                <%= link_to (image_tag article.cover_photo.url(:small), class: 'img-round'), article  %>
               <% end %>
-              <%= link_to article, method: :delete, data: { confirm: 'Are you sure?' }  do %>
-                <button type="button" class="btn btn-danger btn-sm">Delete
-                </button>
-              <% end %>
-            <% end %>
             
-        </div>
-    <% end %> 
+
+              
+            <h4><%= article.excerpt %></h4> 
+
+            <p><strong>Category: </strong>
+              <% article.categories.each do |c| %>
+                <%= c.name %>
+              <% end %>
+            </p> 
+
+            <h5><%= pluralize(article.comments.count, 'comment') %> </h5> 
+
         
-          </div> <!-- .row -->
-<% end %>
-    </div> <!-- .container -->
+
+              <% if current_user.try(:admin?) %>
+                <%= link_to edit_article_path(article) do %>
+                  <button type="button" class="btn btn-success btn-sm">Edit
+                  </button>
+                <% end %>
+                <%= link_to article, method: :delete, data: { confirm: 'Are you sure?' }  do %>
+                  <button type="button" class="btn btn-danger btn-sm">Delete
+                  </button>
+                <% end %>
+              <% end %>
+              
+          </div>
+      <% end %> 
+          
+            </div> <!-- .row -->
+  <% end %>
+</div> <!-- .container -->
 <% content_for :aside do %>
-  
+  <%= render 'most_commented' %>
+  <%= render 'sidebar_popular' %>
 <% end %>

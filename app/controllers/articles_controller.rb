@@ -13,7 +13,7 @@ class ArticlesController < ApplicationController
     @rand_record2 = rand_record[1]
     @rand_record3 = rand_record[2]
     @most_popular = Article.most_popular
-    @most_discussed = Article.order(article.comments.count)
+    @most_discussed = Article.most_comments
   end
 
   # GET /articles/1

@@ -1,0 +1,4 @@
+<h3>Hot Topic:</h3>
+<% @most_discussed.each do |article| %>
+  <h6><%= link_to article.title, article %></h6>
+<% end %>
