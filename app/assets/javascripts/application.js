@@ -18,3 +18,4 @@
 //= require turbolinks
 //= require_tree .
 
+.emulateTransitionEnd(1000)

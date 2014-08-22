@@ -8,6 +8,7 @@ class CategoriesController < ApplicationController
   def show
     @category = Category.find(params[:id])
     @articles = @category.articles
+    @newest_article = @articles.order(created_at: :desc).first
   end
 
   # GET /articles/new

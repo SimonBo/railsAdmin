@@ -12,14 +12,19 @@
     <header>
       <%= render 'layouts/navigation' %>
     </header>
+
+    <div class="col-sm-2 blog-side-left">
+      
+    </div>
+
     <main role="main" class="container">
       <div class="row">
-        <div class="col-sm-10 blog-main">
+        <div class="col-sm-8 blog-main">
           <%= render 'layouts/messages' %>
           <%= yield %>
         </div><!-- End of blog-main -->
        
-    <div class="col-sm-2 blog-side">
+    <div class="col-sm-2 blog-side-right">
       <%= yield :aside %>
     </div>
    </div> <!-- end of row -->

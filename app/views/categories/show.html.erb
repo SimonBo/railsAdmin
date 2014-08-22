@@ -2,23 +2,50 @@
   <%= @category.name %>
 </h1>
 
-<div class="row">
-<div class="list-group">
-  <h2 class="list-group-item">Articles:</h2>
-  
-    <% @category.articles.each do |article| %>
-         <%= link_to article.title, article, class: "list-group-item" %>
-    <% end %>
-</div>  
+
+
+<div id="mycarousel" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        <div class="item active">
+        <%= link_to (image_tag @newest_article.cover_photo.url(:carousel), alt: "Newest article", class: "img-responsive"),@newest_article %>
+           <div class="carousel-caption">
+            <h2><%= link_to @newest_article.title, @newest_article, class: 'link-white'  %></h2>
+            <h4><%= @newest_article.excerpt %></h4>
+           </div>
+        </div>
+    </div>
 </div>
 
 
-<%= link_to  edit_category_path(@category) do %>
-  <button type="button" class="btn btn-success btn-sm">Edit Category
-  </button>
+<% unless @newest_article %>
+  
+
+  <% @category.articles.each do |article| %>
+    <ul class="media-list">
+      <li class="media">
+        <% if article.cover_photo.file? %>
+          <%= link_to (image_tag article.cover_photo.url(:small), class: "pull-left img-circle"), article %>
+        <% end %>
+        <div class="media-body">
+          <h3 class="media-heading"><%= link_to article.title, article %></h3>
+          <h4 class='media-heading'><%= article.excerpt %></h4>
+        </div>
+      </li>
+    </ul>
+    
+  <% end %>
 <% end %>
-<%= link_to categories_path do %>
-  <button type="button" class="btn btn-warning btn-sm">Back to Categories</button>
+
+<% if current_user.try(:admin?) %>
+  <div class='top-buffer'>
+    <%= link_to  edit_category_path(@category) do %>
+      <button type="button" class="btn btn-success btn-sm">Edit Category
+      </button>
+    <% end %>
+    <%= link_to categories_path do %>
+      <button type="button" class="btn btn-warning btn-sm">Back to Categories</button>
+    <% end %>
+  </div>
 <% end %>
 
 <% content_for :aside do %>

@@ -1,10 +1,17 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!, :except => [:show, :index]
+  before_filter :authenticate_user!, except: [:show, :index]
+  before_filter :check_admin, except: [:show, :index]
+  
+
   # GET /articles
   # GET /articles.json
   def index
     @articles = Article.all
+    rand_record = Article.order("RANDOM()").first(3)
+    @rand_record1 = rand_record[0]
+    @rand_record2 = rand_record[1]
+    @rand_record3 = rand_record[2]
   end
 
   # GET /articles/1
@@ -71,31 +78,8 @@ class ArticlesController < ApplicationController
     end
   end
 
-  # def undo_link
-  #   view_context.link_to("undo", revert_version_path(@article.versions.scoped.last), :method => :post)
-  # end
 
-  # def undo
-  #   @post_version = PaperTrail::Version.find_by_id(params[:id])
-   
-  #   begin
-  #     if @post_version.reify
-  #       @post_version.reify.save
-  #     else
-  #       # For undoing the create action
-  #       @post_version.item.destroy
-  #     end
-  #     flash[:success] = "Undid that! #{make_redo_link}"
-  #   rescue
-  #     flash[:alert] = "Failed undoing the action..."
-  #   ensure
-  #     redirect_to root_path
-  #   end
-  # end
 
-  # def history
-  #   @versions = PaperTrail::Version.order('created_at DESC')
-  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -103,17 +87,26 @@ class ArticlesController < ApplicationController
       @article = Article.find(params[:id])
     end
 
-    # def make_redo_link
-    #   params[:redo] == "true" ? link = "Undo that plz!" : link = "Redo that plz!"
-    #   view_context.link_to link, undo_path(@article_version.next, redo: !params[:redo]), method: :post
-    # end
-
-    # def make_undo_link
-    #   view_context.link_to 'Undo that plz!', undo_path(@article.versions.last), method: :post
-    # end
+ 
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
       params.require(:article).permit(:title, :content, :excerpt, :author_id, :cover_photo, :photo, :pictures, :images, :category_ids =>[])
     end
+
+    # def authenticate_myway!
+    #   if current_user.admin?
+    #     authenticate_user!
+    #   else 
+    #     authenticate_user!, except: [:delete, :new]
+    #   end
+    # end
+
+    def check_admin
+      unless current_user && current_user.admin?
+        flash[:notice] = "You are not an admin"
+        redirect_to articles_path unless current_user && current_user.admin?
+      end
+    end
+    
 end

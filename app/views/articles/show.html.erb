@@ -55,13 +55,14 @@
 
 
 
- 
-<%= link_to  edit_article_path(@article) do %>
-  <button type="button" class="btn btn-success btn-sm">Edit Article
-  </button>
-<% end %>
-<%= link_to articles_path do %>
-  <button type="button" class="btn btn-warning btn-sm">Back to Articles</button>
+<% if current_user.try(:admin?) %>   
+  <%= link_to  edit_article_path(@article) do %>
+    <button type="button" class="btn btn-success btn-sm">Edit Article
+    </button>
+  <% end %>
+  <%= link_to articles_path do %>
+    <button type="button" class="btn btn-warning btn-sm">Back to Articles</button>
+  <% end %>
 <% end %>
 </main>
 
