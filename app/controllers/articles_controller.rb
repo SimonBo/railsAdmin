@@ -12,6 +12,8 @@ class ArticlesController < ApplicationController
     @rand_record1 = rand_record[0]
     @rand_record2 = rand_record[1]
     @rand_record3 = rand_record[2]
+    @most_popular = Article.most_popular
+    @most_discussed = Article.order(article.comments.count)
   end
 
   # GET /articles/1
@@ -19,6 +21,7 @@ class ArticlesController < ApplicationController
   def show
     @article  = Article.find(params[:id])
     @pictures = @article.pictures
+    @article.update_column(:visits, @article.visits + 1)
   end
 
   # GET /articles/new

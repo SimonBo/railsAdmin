@@ -12,5 +12,13 @@ class Article < ActiveRecord::Base
                                   :url  => "/assets/articles/:id/:style/:basename.:extension",
                                   :path => ":rails_root/public/assets/articles/:id/:style/:basename.:extension",
                                   :default_url => 'http://placehold.it/300x300'
+  validates_attachment_content_type :cover_photo, :content_type => ['image/jpeg', 'image/png']
   has_many :pictures, :dependent => :destroy
+
+  def self.most_popular
+    self.order("visits DESC").limit(3)
+  end
+
 end
+
+

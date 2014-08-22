@@ -9,7 +9,7 @@
   </ol>
   <div class="carousel-inner">  
     <div class="item active">
-        <%= image_tag @rand_record1.cover_photo.url(:carousel), alt: "First slide" %>
+        <%= image_tag @most_popular[0].cover_photo.url(:carousel), alt: "First slide" %>
     
       <div class="container">
         <div class="carousel-caption">
@@ -20,7 +20,7 @@
       </div>
     </div>
     <div class="item">
-      <%= image_tag @rand_record2.cover_photo.url(:carousel), alt: "First slide" %>
+      <%= image_tag @most_popular[1].cover_photo.url(:carousel), alt: "First slide" %>
       <div class="container">
         <div class="carousel-caption">
           <h1>Another example headline.</h1>
@@ -30,7 +30,7 @@
       </div>
     </div>
     <div class="item">
-      <%= image_tag @rand_record3.cover_photo.url(:carousel), alt: "First slide" %>
+      <%= image_tag @most_popular[2].cover_photo.url(:carousel), alt: "First slide" %>
       <div class="container">
         <div class="carousel-caption">
           <h1>One more for good measure.</h1>

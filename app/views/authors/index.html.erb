@@ -6,7 +6,7 @@
   <ul class="media-list">
     <li class="media">
       <% if author.author_photo.file? %>
-        <%= link_to (image_tag author.author_photo.url(:small), class: "pull-left img-circle"), author %>
+        <%= link_to (image_tag author.author_photo.url(:small), class: "pull-left img-circle img-responsive"), author %>
       <% end %>
       <div class="media-body">
         <h3 class="media-heading"><%= link_to author.to_s, author %></h3>
