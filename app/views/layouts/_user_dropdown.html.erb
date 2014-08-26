@@ -1,0 +1,13 @@
+
+
+<div class="dropdown navbar-text navbar-right">
+  
+    <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+      <%= current_user.email  %>
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+      <li role="presentation"><a role="menuitem" tabindex="-1"><%= link_to 'Edit account', edit_user_registration_path %></a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1"><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></a></li>
+    </ul>
+</div>

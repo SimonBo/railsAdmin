@@ -14,9 +14,15 @@
       <ul class="nav navbar-nav">
         <%= render 'layouts/navigation_links' %>
       </ul>
-      <% if user_signed_in? %>
-        <p class="navbar-text navbar-right"><%= current_user.email  %></p>
+      <% unless user_signed_in? %>
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to 'Sign in', new_user_session_path %></li>
+          <li><%= link_to 'Sign up', new_user_registration_path %></li>
+        </ul>
+      <% else %>
+        <%= render 'layouts/user_dropdown' %>
       <% end %>
+
       <% if current_user.try(:admin?) %>
         <%= link_to "Admin", rails_admin.dashboard_path, class: "navbar-text navbar-right" %>
       <% end %>
