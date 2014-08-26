@@ -1,0 +1,10 @@
+<h2>Most Faved:</h2>
+<% Article.most_favs.each do |article| %>
+  <div class="text-center">
+    <h4><%= link_to article.title, article %></h4>
+    <%= link_to (image_tag article.cover_photo.url(:small), alt: "Pic"), article %>
+    <p><%= pluralize(article.favorites_count, 'person') %>  faved</p>
+  </div>
+<% end %>
+
+

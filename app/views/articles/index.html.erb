@@ -4,13 +4,19 @@
 
 
 
-  <%= search_form_for @search do |f| %>
+<!--   <%= search_form_for @search, url: search_articles_path, method: :post do |f| %>
+    <%= f.condition_fields do |c| %>
+      <%= render "condition_fields", f: c %>
+    <% end %>
+    <p><%= link_to_add_fields "Add Conditions", f, :condition %></p>
     <div class="field">
-      <%= f.label :title_cont, "Name contains" %>
-      <%= f.text_field :title_cont %>
+      Sort:
+      <%= f.sort_fields do |s| %>
+        <%= s.sort_select %>
+      <% end %>
     </div>
     <div class="actions"><%= f.submit "Search" %></div>
-  <% end %>
+  <% end %> -->
 
 
 
@@ -55,7 +61,9 @@
   <% end %>
 </div> <!-- .container -->
 <% content_for :aside do %>
+  <%= render 'search_sidebar' %>
   <%= render 'social' %>
+  <%= render 'most_faved' %>
   <%= render 'most_commented' %>
   <%= render 'sidebar_popular' %>
 <% end %>

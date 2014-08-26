@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   devise_for :users
   
   resources :articles do
+    collection { post :search, to: 'articles#index' }
     resources :comments
   end
 

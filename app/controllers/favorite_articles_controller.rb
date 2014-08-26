@@ -1,5 +1,7 @@
 class FavoriteArticlesController < ApplicationController
   before_action :set_article
+
+  
   
   def create
     if Favorite.create(favorited: @article, user: current_user)

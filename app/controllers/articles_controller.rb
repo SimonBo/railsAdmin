@@ -9,6 +9,8 @@ class ArticlesController < ApplicationController
     
     @search = Article.search(params[:q])
     @articles = @search.result
+    @search.build_condition if @search.conditions.empty?
+    @search.build_sort if @search.sorts.empty?
     # rand_record = Article.order("RANDOM()").first(3)
     # @rand_record1 = rand_record[0]
     # @rand_record2 = rand_record[1]

@@ -10,12 +10,18 @@ class Article < ActiveRecord::Base
   validates_attachment_content_type :cover_photo, :content_type => ['image/jpeg', 'image/png']
   has_many :pictures, :dependent => :destroy
 
+  has_many :favorites, as: :favorited
+
   def self.most_popular
     self.order("visits DESC").limit(3)
   end
 
   def self.most_comments
     self.order("comments_count DESC").limit(5)
+  end
+
+  def self.most_favs
+    self.order("favorites_count DESC").limit(3)
   end
 
 end
