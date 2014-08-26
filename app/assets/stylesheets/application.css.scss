@@ -17,6 +17,16 @@
 @import "bootstrap";
 @import "font-awesome";
 
+@media screen and (max-width: 475px) {
+	.responsive-article-title{
+			font-size: 0.7em;
+			}
+	.responsive-article-excerpt{
+		font-size: 0.6em;
+	}
+}
+
+
 .carousel-inner > .item {
     
     -webkit-transition: 1s ease-in-out left;

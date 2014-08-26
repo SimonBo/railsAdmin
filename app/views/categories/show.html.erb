@@ -9,8 +9,8 @@
         <div class="item active">
         <%= link_to (image_tag @newest_article.cover_photo.url(:carousel), alt: "Newest article", class: "img-responsive"),@newest_article %>
            <div class="carousel-caption">
-            <h2><%= link_to @newest_article.title, @newest_article, class: 'link-white'  %></h2>
-            <h4><%= @newest_article.excerpt %></h4>
+            <h2><%= link_to @newest_article.title, @newest_article, class: 'link-white responsive-article-title'  %></h2>
+            <h4 class="responsive-article-excerpt"><%= @newest_article.excerpt  %></h4>
            </div>
         </div>
     </div>
