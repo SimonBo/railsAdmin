@@ -6,7 +6,9 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all
+    
+    @search = Article.search(params[:q])
+    @articles = @search.result
     # rand_record = Article.order("RANDOM()").first(3)
     # @rand_record1 = rand_record[0]
     # @rand_record2 = rand_record[1]

@@ -1,6 +1,19 @@
 <div class="container-fluid">
   <h1>NEWS</h1>
   <%= render 'carousel' %>
+
+
+
+  <%= search_form_for @search do |f| %>
+    <div class="field">
+      <%= f.label :title_cont, "Name contains" %>
+      <%= f.text_field :title_cont %>
+    </div>
+    <div class="actions"><%= f.submit "Search" %></div>
+  <% end %>
+
+
+
   <% @articles.order(created_at: :desc).each do |article| %>
     <div class="row">
       

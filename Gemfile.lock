@@ -1,4 +1,16 @@
 GIT
+  remote: git://github.com/activerecord-hackery/ransack.git
+  revision: 742425ade4bb66db573dc13bf436a8f3c87b733b
+  branch: rails-4.1
+  specs:
+    ransack (1.2.4)
+      actionpack (>= 4.0)
+      activerecord (>= 4.0)
+      activesupport (>= 4.0)
+      i18n
+      polyamorous (~> 1.1)
+
+GIT
   remote: git://github.com/sferik/rails_admin.git
   revision: 02ba1dab32dcaa1ec79c37a587373baa4d1ebff5
   specs:
@@ -115,6 +127,8 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
+    polyamorous (1.1.0)
+      activerecord (>= 3.0)
     polyglot (0.3.5)
     rack (1.5.2)
     rack-pjax (0.7.0)
@@ -197,6 +211,7 @@ DEPENDENCIES
   rails (= 4.1.4)
   rails_admin!
   rails_admin_multiple_upload!
+  ransack!
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   simple_form

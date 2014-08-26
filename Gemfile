@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'ransack', github: 'activerecord-hackery/ransack', branch: 'rails-4.1'
+
 gem "font-awesome-rails"
 gem 'rails_admin_multiple_upload', :path => '../rails_admin_multiple_upload'
 
