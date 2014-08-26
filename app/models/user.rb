@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :comments
+  has_many :favorites
+  has_many :favorite_articles, through: :favorites, source: :favorited, source_type: 'Article'
 
   def to_s
     "#{email}"
