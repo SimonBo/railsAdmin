@@ -21,4 +21,3 @@ class FavoriteArticlesController < ApplicationController
   end
 end
 
-
