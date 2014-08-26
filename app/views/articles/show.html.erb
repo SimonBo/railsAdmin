@@ -55,25 +55,30 @@
 <%= render "comments/form" %>
 
 <% unless current_user.favorite_articles.exists?(id: @article.id) %>
-  <%= link_to 'Add to favorites', favorite_articles_path(article_id: @article), method: :post %>
+  <%= link_to favorite_articles_path(article_id: @article), method: :post do %>
+  <button type="button" class="btn btn-success">Add to favorites</button>
+  <% end %>
 <% else %>
-  <%= link_to 'Remove from favorites', favorite_article_path(@article), method: :delete %>
+  <%= link_to favorite_article_path(@article), method: :delete do %>
+  <button type="button" class="btn btn-danger">Remove from favorites</button>
+  <% end %>
 <% end %>
 
+<%= link_to articles_path do %>
+    <button type="button" class="btn btn-warning">Back to Articles</button> 
+<% end %>
 
 
 
 <% if current_user.try(:admin?) %>   
   <%= link_to  edit_article_path(@article) do %>
-    <i class="fa fa-file-o fa-4x "></i>
+    <button type="button" class="btn btn-info">Edit</button>
   <% end %>
   <%= link_to @article, method: :delete, data: { confirm: 'Are you sure?' }  do %>
-    <i class="fa fa-eraser fa-4x space-in-between"></i>
+    <button type="button" class="btn btn-danger">Delete</button>
   <% end %>
 <% end %>
-  <%= link_to articles_path do %>
-    <i class="fa fa-backward fa-4x"></i> 
-  <% end %>
+  
 
 </main>
 
