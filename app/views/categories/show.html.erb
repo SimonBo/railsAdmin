@@ -37,7 +37,7 @@
 <% end %>
 
 <% if current_user.try(:admin?) %>
-  <div class='top-buffer'>
+  <div>
     <%= link_to  edit_category_path(@category) do %>
       <button type="button" class="btn btn-success btn-sm">Edit Category
       </button>

@@ -10,6 +10,7 @@
   </head>
   <body>
     <header>
+    
       <%= render 'layouts/navigation' %>
     </header>
 
@@ -19,7 +20,7 @@
 
     <main role="main" class="container">
       <div class="row">
-        <div class="col-sm-8 blog-main">
+        <div class="col-sm-8 blog-main  top-buffer">
           <%= render 'layouts/messages' %>
           <%= yield %>
         </div><!-- End of blog-main -->

@@ -13,24 +13,24 @@
     
       <div class="container">
         <div class="carousel-caption">
-          <h1><%= link_to @most_popular[0].title, @most_popular[0], class: 'link-white' %></h1>
-          <p><%= @most_popular[0].excerpt  %></p>
+          <h1><%= link_to @most_popular[0].title, @most_popular[0], class: 'link-white responsive-article-title' %></h1>
+          <p class="responsive-article-excerpt"><%= @most_popular[0].excerpt  %></p>
         </div>
       </div>
     </div>
     <div class="item">
 <%= link_to (image_tag @most_popular[1].cover_photo.url(:carousel), alt: "Picture"), @most_popular[1] %>      <div class="container">
         <div class="carousel-caption">
-          <h1><%= link_to @most_popular[1].title, @most_popular[1], class: 'link-white' %></h1>
-          <p><%= @most_popular[1].excerpt  %></p>
+          <h1><%= link_to @most_popular[1].title, @most_popular[1], class: 'link-white responsive-article-title' %></h1>
+          <p class="responsive-article-excerpt"><%= @most_popular[1].excerpt  %></p>
         </div>
       </div>
     </div>
     <div class="item">
 <%= link_to (image_tag @most_popular[2].cover_photo.url(:carousel), alt: "Picture"), @most_popular[2] %>      <div class="container">
         <div class="carousel-caption">
-          <h1><%= link_to @most_popular[2].title, @most_popular[2], class: 'link-white' %></h1>
-          <p><%= @most_popular[2].excerpt  %></p></p>
+          <h1><%= link_to @most_popular[2].title, @most_popular[2], class: 'link-white responsive-article-title' %></h1>
+          <p class="responsive-article-excerpt"><%= @most_popular[2].excerpt  %></p></p>
         </div>
       </div>
     </div>

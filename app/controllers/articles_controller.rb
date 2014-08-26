@@ -99,10 +99,16 @@ class ArticlesController < ApplicationController
  
 
     def check_admin
-      unless current_user && current_user.admin?
-        flash[:notice] = "You are not an admin"
-        redirect_to articles_path unless current_user && current_user.admin?
+      unless current_user && current_user.admin? || current_user.author?
+        flash[:notice] = "You are not an admin/author"
+        redirect_to articles_path unless current_user && current_user.admin? || current_user.author?
       end
     end
-    
+   
+    # def check_author
+    #   unless current_user && current_user.author?
+    #     flash[:notice] = "You are not an author"
+    #     redirect_to articles_path unless current_user && current_user.author?
+    #   end
+    # end 
 end
