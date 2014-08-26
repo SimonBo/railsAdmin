@@ -14,6 +14,12 @@
       <ul class="nav navbar-nav">
         <%= render 'layouts/navigation_links' %>
       </ul>
+      <% if user_signed_in? %>
+        <p class="navbar-text navbar-right">Signed in as: <%= current_user.email  %></p>
+      <% end %>
+      <% if current_user.try(:admin?) %>
+        <%= link_to "Admin", rails_admin.dashboard_path, class: "navbar-text navbar-right" %>
+      <% end %>
     </div>
   </div>
 </nav>

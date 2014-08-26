@@ -15,6 +15,7 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome";
 
 .carousel-inner > .item {
     
@@ -26,6 +27,9 @@
 
 .top-buffer { margin-top:20px; }
 
+.space-in-between{
+	margin: 0 5px;
+}
 .link-white {
 	color: white;
 }

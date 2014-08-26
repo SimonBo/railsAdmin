@@ -3,6 +3,9 @@
   <!-- <h2>Title:</h2> -->
   <%= @article.title %>
 </h2>
+<%= render @article.author %>
+<%= render @article.categories %>
+<br \><br \>
 <% if @article.cover_photo.file? %>
   <%= image_tag @article.cover_photo.url(:large) %>
 <% end %>
@@ -38,17 +41,17 @@
 <% end %>
 
 </div>
-<h2>Category</h2>
-<%= render @article.categories %>
-
-<%= render @article.author %>
 
 
 
-<h2>Comments</h2>
+
+
+
+
+<h3>Comments</h3>
 <%= render @article.comments %>
 
-<h2>Add a comment:</h2>
+<h4>Add a comment:</h4>
 <%= render "comments/form" %>
 
 
@@ -57,16 +60,20 @@
 
 <% if current_user.try(:admin?) %>   
   <%= link_to  edit_article_path(@article) do %>
-    <button type="button" class="btn btn-success btn-sm">Edit Article
-    </button>
+    <i class="fa fa-file-o fa-4x "></i>
   <% end %>
-  <%= link_to articles_path do %>
-    <button type="button" class="btn btn-warning btn-sm">Back to Articles</button>
+  <%= link_to @article, method: :delete, data: { confirm: 'Are you sure?' }  do %>
+    <i class="fa fa-eraser fa-4x space-in-between"></i>
   <% end %>
 <% end %>
+  <%= link_to articles_path do %>
+    <i class="fa fa-backward fa-4x"></i> 
+  <% end %>
+
 </main>
 
 <% content_for :aside do %>
+  <%= render 'social' %>
+  <%= render 'most_commented' %>
   <%= render 'sidebar_popular' %>
-  <%= render 'sidebar_categories' %>
 <% end %>

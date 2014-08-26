@@ -4,3 +4,9 @@
 
 <%= link_to 'Show', @author %> |
 <%= link_to 'Back', authors_path %>
+
+<% content_for :aside do %>
+  <%= render 'articles/social' %>
+  <%= render 'articles/most_commented' %>
+  <%= render 'articles/sidebar_popular' %>
+<% end %>

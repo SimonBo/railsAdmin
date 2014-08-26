@@ -1,6 +1,5 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!, except: [:show, :index]
   before_filter :check_admin, except: [:show, :index]
   
 
@@ -8,10 +7,10 @@ class ArticlesController < ApplicationController
   # GET /articles.json
   def index
     @articles = Article.all
-    rand_record = Article.order("RANDOM()").first(3)
-    @rand_record1 = rand_record[0]
-    @rand_record2 = rand_record[1]
-    @rand_record3 = rand_record[2]
+    # rand_record = Article.order("RANDOM()").first(3)
+    # @rand_record1 = rand_record[0]
+    # @rand_record2 = rand_record[1]
+    # @rand_record3 = rand_record[2]
     @most_popular = Article.most_popular
     @most_discussed = Article.most_comments
   end
@@ -97,13 +96,7 @@ class ArticlesController < ApplicationController
       params.require(:article).permit(:title, :content, :excerpt, :author_id, :cover_photo, :photo, :pictures, :images, :category_ids =>[])
     end
 
-    # def authenticate_myway!
-    #   if current_user.admin?
-    #     authenticate_user!
-    #   else 
-    #     authenticate_user!, except: [:delete, :new]
-    #   end
-    # end
+ 
 
     def check_admin
       unless current_user && current_user.admin?

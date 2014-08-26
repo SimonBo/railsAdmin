@@ -1,5 +1,6 @@
 class AuthorsController < ApplicationController
   before_action :set_author, only: [:show, :edit, :update, :destroy]
+  before_filter :check_admin, except: [:show, :index]
 
   # GET /authors
   # GET /authors.json
@@ -70,5 +71,12 @@ class AuthorsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def author_params
       params.require(:author).permit(:first_name, :last_name, :author_photo)
+    end
+
+    def check_admin
+      unless current_user && current_user.admin?
+        flash[:notice] = "You are not an admin"
+        redirect_to authors_path unless current_user && current_user.admin?
+      end
     end
 end

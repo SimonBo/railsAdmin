@@ -1,4 +1,7 @@
-<h3>Hot Topic:</h3>
-<% @most_discussed.each do |article| %>
-  <h6><%= link_to article.title, article %></h6>
+<h2>Engaging:</h2>
+<% Article.most_comments.each do |article| %>
+  <div class="text-center">
+    <h4><%= link_to article.title, article %></h4>
+    <%= link_to (image_tag article.cover_photo.url(:small), alt: "Pic"), article %>
+  </div>
 <% end %>

@@ -110,9 +110,6 @@ GEM
     nokogiri (1.6.3.1)
       mini_portile (= 0.6.0)
     orm_adapter (0.5.0)
-    paper_trail (3.0.3)
-      activerecord (>= 3.0, < 5.0)
-      activesupport (>= 3.0, < 5.0)
     paperclip (4.2.0)
       activemodel (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -192,10 +189,10 @@ DEPENDENCIES
   bootstrap-sass (~> 3.2.0)
   coffee-rails (~> 4.0.0)
   devise
+  font-awesome-rails
   jbuilder (~> 2.0)
   jquery-fileupload-rails
   jquery-rails
-  paper_trail (~> 3.0.3)
   paperclip (~> 4.1)
   rails (= 4.1.4)
   rails_admin!

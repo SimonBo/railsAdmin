@@ -15,3 +15,9 @@
 <%= link_to authors_path do %>
   <button type="button" class="btn btn-warning btn-sm">Back to Authors</button>
 <% end %>
+
+<% content_for :aside do %>
+  <%= render 'articles/social' %>
+  <%= render 'articles/most_commented' %>
+  <%= render 'articles/sidebar_popular' %>
+<% end %>

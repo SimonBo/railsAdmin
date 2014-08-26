@@ -1,5 +1,8 @@
 
-<h3>Popular:</h3>
-<% @most_popular.each do |article| %>
-	<h6><%= link_to article.title, article  %></h6>
+<h2>Popular:</h2>
+<% Article.most_popular.each do |article| %>
+	<div class="text-center">
+		<h4><%= link_to article.title, article  %></h4>
+		<%= link_to (image_tag article.cover_photo.url(:small), alt: "First slide"), article %>
+	</div>
 <% end %>

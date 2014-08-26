@@ -22,3 +22,8 @@
 <%= link_to 'New Author', new_author_path %>
 
 
+<% content_for :aside do %>
+  <%= render 'articles/social' %>
+  <%= render 'articles/most_commented' %>
+  <%= render 'articles/sidebar_popular' %>
+<% end %>

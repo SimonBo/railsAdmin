@@ -1,4 +1,7 @@
 class CategoriesController < ApplicationController
+
+  before_filter :check_admin, except: [:show, :index]
+
   def index
     @categories = Category.all
   end
@@ -62,5 +65,12 @@ class CategoriesController < ApplicationController
 
     def category_params
       params.require(:category).permit(:name, :article_ids => [])
+    end
+
+    def check_admin
+      unless current_user && current_user.admin?
+        flash[:notice] = "You are not an admin"
+        redirect_to categories_path unless current_user && current_user.admin?
+      end
     end
 end

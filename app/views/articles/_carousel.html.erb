@@ -9,29 +9,27 @@
   </ol>
   <div class="carousel-inner">  
     <div class="item active">
-        <%= image_tag @most_popular[0].cover_photo.url(:carousel), alt: "First slide" %>
+        <%= link_to (image_tag @most_popular[0].cover_photo.url(:carousel), alt: "Picture"), @most_popular[0] %>
     
       <div class="container">
         <div class="carousel-caption">
-          <h1><%= @most_popular[0].title %></h1>
+          <h1><%= link_to @most_popular[0].title, @most_popular[0], class: 'link-white' %></h1>
           <p><%= @most_popular[0].excerpt  %></p>
         </div>
       </div>
     </div>
     <div class="item">
-      <%= image_tag @most_popular[1].cover_photo.url(:carousel), alt: "First slide" %>
-      <div class="container">
+<%= link_to (image_tag @most_popular[1].cover_photo.url(:carousel), alt: "Picture"), @most_popular[1] %>      <div class="container">
         <div class="carousel-caption">
-          <h1><%= @most_popular[1].title %></h1>
+          <h1><%= link_to @most_popular[1].title, @most_popular[1], class: 'link-white' %></h1>
           <p><%= @most_popular[1].excerpt  %></p>
         </div>
       </div>
     </div>
     <div class="item">
-      <%= image_tag @most_popular[2].cover_photo.url(:carousel), alt: "First slide" %>
-      <div class="container">
+<%= link_to (image_tag @most_popular[2].cover_photo.url(:carousel), alt: "Picture"), @most_popular[2] %>      <div class="container">
         <div class="carousel-caption">
-          <h1><%= @most_popular[2].title %></h1>
+          <h1><%= link_to @most_popular[2].title, @most_popular[2], class: 'link-white' %></h1>
           <p><%= @most_popular[2].excerpt  %></p></p>
         </div>
       </div>
