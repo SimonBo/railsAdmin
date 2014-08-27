@@ -4,19 +4,7 @@
 
 
 
-<!--   <%= search_form_for @search, url: search_articles_path, method: :post do |f| %>
-    <%= f.condition_fields do |c| %>
-      <%= render "condition_fields", f: c %>
-    <% end %>
-    <p><%= link_to_add_fields "Add Conditions", f, :condition %></p>
-    <div class="field">
-      Sort:
-      <%= f.sort_fields do |s| %>
-        <%= s.sort_select %>
-      <% end %>
-    </div>
-    <div class="actions"><%= f.submit "Search" %></div>
-  <% end %> -->
+
 
 
 
@@ -66,5 +54,5 @@
   <% end %>
 </div> <!-- .container -->
 <% content_for :aside do %>
-  <%= render 'search_sidebar' %>
+  
 <% end %>

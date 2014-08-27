@@ -6,11 +6,15 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    
-    @search = Article.search(params[:q])
-    @articles = @search.result
-    @search.build_condition if @search.conditions.empty?
-    @search.build_sort if @search.sorts.empty?
+    if params[:q]
+      @search = Article.search(params[:q])
+      @articles = @search.result
+    else
+      @articles = Article.all
+    end
+
+    # @search.build_condition if @search.conditions.empty?
+    # @search.build_sort if @search.sorts.empty?
     # rand_record = Article.order("RANDOM()").first(3)
     # @rand_record1 = rand_record[0]
     # @rand_record2 = rand_record[1]
@@ -49,18 +53,18 @@ class ArticlesController < ApplicationController
 
         if params[:images]
           # The magic is here ;)
-          params[:images].each { |image|
-            @article.pictures.create(image: image)
-          }
-        end
-          format.html { redirect_to @article, notice: "Article was successfully created." }
-          format.json { render :show, status: :created, location: @article }
-        else
-          format.html { render :new }
-          format.json { render json: @article.errors, status: :unprocessable_entity }
-        end
-      end
-  end
+params[:images].each { |image|
+  @article.pictures.create(image: image)
+}
+end
+format.html { redirect_to @article, notice: "Article was successfully created." }
+format.json { render :show, status: :created, location: @article }
+else
+  format.html { render :new }
+  format.json { render json: @article.errors, status: :unprocessable_entity }
+end
+end
+end
 
   # PATCH/PUT /articles/1
   # PATCH/PUT /articles/1.json
@@ -93,14 +97,14 @@ class ArticlesController < ApplicationController
       @article = Article.find(params[:id])
     end
 
- 
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
       params.require(:article).permit(:title, :content, :excerpt, :author_id, :cover_photo, :photo, :pictures, :images, :category_ids =>[])
     end
 
- 
+
 
     def check_admin
       unless current_user && current_user.admin? || current_user.author?
@@ -108,11 +112,11 @@ class ArticlesController < ApplicationController
         redirect_to articles_path unless current_user && current_user.admin? || current_user.author?
       end
     end
-   
+
     # def check_author
     #   unless current_user && current_user.author?
     #     flash[:notice] = "You are not an author"
     #     redirect_to articles_path unless current_user && current_user.author?
     #   end
     # end 
-end
+  end
