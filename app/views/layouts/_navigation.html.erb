@@ -7,7 +7,6 @@
       </div>
       
     </div>
-
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
           <span class="sr-only">Toggle navigation</span>
@@ -18,20 +17,22 @@
         
       </div>
       <div class="collapse navbar-collapse nav-links">
-        <ul class="nav navbar-nav">
-          <%= render 'layouts/navigation_links' %>
-        </ul>
-
-        <% unless user_signed_in? %>
-          <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to 'Sign in', new_user_session_path %></li>
-            <li><%= link_to 'Sign up', new_user_registration_path %></li>
+        <div class="col-sm-12 col-md-8">
+          <ul class="nav navbar-nav">
+            <%= render 'layouts/navigation_links' %>
           </ul>
-        <% else %>
-          <%= render 'layouts/user_dropdown' %>
-            
-        <% end %>
-        
+        </div>
+        <div class="col-sm-12 col-md-4">
+          <% unless user_signed_in? %>
+            <ul class="nav navbar-nav navbar-right">
+              <li><%= link_to 'Sign in', new_user_session_path %></li>
+              <li><%= link_to 'Sign up', new_user_registration_path %></li>
+            </ul>
+          <% else %>
+            <%= render 'layouts/user_dropdown' %>
+              
+          <% end %>
+        </div>
       </div>
   </div>
 </nav>
