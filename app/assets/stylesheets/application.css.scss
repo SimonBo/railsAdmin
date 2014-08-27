@@ -30,6 +30,10 @@
 .navbar-default{
 	background-color: white;
 }
+
+.nav-links{
+	margin-top: 10px;
+}
 .carousel-inner > .item {
     
     -webkit-transition: 1s ease-in-out left;
@@ -50,10 +54,10 @@
 }
 .category-link {
 	
-	font-size: 1.5em;
+	font-size: 1.3em;
 }
 .category-link:hover {
-	background-color: red !important;
+	background-color: #ED1C24 !important;
 }
 
 .site-name{

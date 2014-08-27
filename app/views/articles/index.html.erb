@@ -1,7 +1,13 @@
 <div class="container-fluid">
-  <h1>NEWS</h1>
-  <%= render 'carousel' %>
-
+  <% if params[:q] %>
+    <h1>Search:</h1>
+  <% else %>
+    <h1>NEWS</h1>
+  <% end %>
+  
+  <% unless params[:q] %>
+    <%= render 'carousel' %>
+  <% end %>
 
 
 
