@@ -5,6 +5,7 @@
       <div class='col-sm-12'>
         <p class="text-center site-name">第一生活</p>
       </div>
+      
     </div>
 
       <div class="navbar-header">
@@ -28,11 +29,15 @@
           </ul>
         <% else %>
           <%= render 'layouts/user_dropdown' %>
+            
         <% end %>
-
-        <% if current_user.try(:admin?) %>
-          <%= link_to "Admin", rails_admin.dashboard_path, class: "navbar-text navbar-right" %>
-        <% end %>
+        
       </div>
   </div>
 </nav>
+
+
+
+        
+
+        

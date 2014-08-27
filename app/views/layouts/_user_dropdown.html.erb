@@ -9,5 +9,9 @@
     <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
       <li role="presentation"><a role="menuitem" tabindex="-1"><%= link_to 'Edit account', edit_user_registration_path %></a></li>
       <li role="presentation"><a role="menuitem" tabindex="-1"><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></a></li>
+      <% if current_user.try(:admin?) %>
+        <li role="presentation"><a role="menuitem" tabindex="-1"><%= link_to 'Admin', rails_admin.dashboard_path %></a></li>  
+      <% end %>
     </ul>
 </div>
+

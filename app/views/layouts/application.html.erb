@@ -20,13 +20,17 @@
 
     <main role="main" class="container">
       <div class="row">
-        <div class="col-sm-8 blog-main  top-buffer">
+        <div class="col-sm-8 main-content top-buffer">
           <%= render 'layouts/messages' %>
           <%= yield %>
         </div><!-- End of blog-main -->
        
-    <div class="col-sm-4 blog-side-right">
+    <div class="col-sm-4 blog-side-right top-buffer">
       <%= yield :aside %>
+      <%= render 'articles/social' %>
+      <%= render 'articles/most_faved' %>
+      <%= render 'articles/most_commented' %>
+      <%= render 'articles/sidebar_popular' %>
     </div>
    </div> <!-- end of row -->
       </main>
