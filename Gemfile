@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'omniauth-twitter'
+
 gem 'ransack', github: 'activerecord-hackery/ransack', branch: 'rails-4.1'
 
 gem "font-awesome-rails"

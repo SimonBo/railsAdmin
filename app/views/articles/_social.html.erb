@@ -1,4 +1,10 @@
+<% content_for :head, auto_discovery_link_tag(:atom, articles_url(format: "atom")) %>
+
 <div class="text-center social-links">
+  <%= link_to articles_url(format: "atom") do %>
+    <i class="fa fa-rss-square fa-2x space-in-between"></i>
+  <% end %>
+  
   <a href='http://www.google.com'><i class="fa fa-weixin fa-2x"></i></a>
   <a href='#'><i class="fa fa-facebook fa-2x space-in-between"></i></a>
   <a href="www.twitter.com" class="link-to-twitter"><i class="fa fa-twitter fa-2x space-in-between"></i> </a>

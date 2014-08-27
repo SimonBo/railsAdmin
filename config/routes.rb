@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :pictures
   resources :favorite_articles, only: [:create, :destroy]
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  devise_for :users
+  devise_for :users,  controllers: {omniauth_callbacks: "omniauth_callbacks"}
   
   resources :articles do
     collection { post :search, to: 'articles#index' }
