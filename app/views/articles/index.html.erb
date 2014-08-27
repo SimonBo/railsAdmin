@@ -47,11 +47,14 @@
         
 
               <% if current_user.try(:admin?) %>
+                <%= link_to  new_article_path(@article) do %>
+                  <button type="button" class="btn btn-success">New</button>
+                <% end %>   
                 <%= link_to edit_article_path(article) do %>
-                  <i class="fa fa-file-o fa-4x"></i>
+                  <button type="button" class="btn btn-info">Edit</button>
                 <% end %>
                 <%= link_to article, method: :delete, data: { confirm: 'Are you sure?' }  do %>
-                  <i class="fa fa-eraser fa-4x space-in-between"></i>
+                  <button type="button" class="btn btn-danger">Delete</button>
                 <% end %>
               <% end %>
               

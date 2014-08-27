@@ -3,18 +3,22 @@
 </h1>
 
 
+<% if @category.articles.empty? %>
+  <h1>No articles here, sorry...</h1>
 
-<div id="mycarousel" class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner">
-        <div class="item active">
-        <%= link_to (image_tag @newest_article.cover_photo.url(:carousel), alt: "Newest article", class: "img-responsive"),@newest_article %>
-           <div class="carousel-caption">
-            <h2><%= link_to @newest_article.title, @newest_article, class: 'link-white responsive-article-title'  %></h2>
-            <h4 class="responsive-article-excerpt"><%= @newest_article.excerpt  %></h4>
-           </div>
-        </div>
-    </div>
-</div>
+<% else %>
+  <div id="mycarousel" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+          <div class="item active">
+          <%= link_to (image_tag @newest_article.cover_photo.url(:carousel), alt: "Newest article", class: "img-responsive"),@newest_article %>
+             <div class="carousel-caption">
+              <h2><%= link_to @newest_article.title, @newest_article, class: 'link-white responsive-article-title'  %></h2>
+              <h4 class="responsive-article-excerpt"><%= @newest_article.excerpt  %></h4>
+             </div>
+          </div>
+      </div>
+  </div>
+<% end %>
 
 
 <% unless @newest_article %>
@@ -37,19 +41,22 @@
 <% end %>
 
 <% if current_user.try(:admin?) %>
-  <div>
+  <div class="top-buffer-10">
+    <%= link_to  new_category_path(@category) do %>
+      <button type="button" class="btn btn-default btn-large">New Category</button>
+    <% end %>
     <%= link_to  edit_category_path(@category) do %>
-      <button type="button" class="btn btn-success btn-sm">Edit Category
+      <button type="button" class="btn btn-info btn-large">Edit Category
       </button>
     <% end %>
     <%= link_to categories_path do %>
-      <button type="button" class="btn btn-warning btn-sm">Back to Categories</button>
+      <button type="button" class="btn btn-warning btn-large">Back to Categories</button>
     <% end %>
+    <%= link_to  new_article_path(@article) do %>
+      <button type="button" class="btn btn-success btn-large">New Article</button>
+    <% end %>
+    
+
   </div>
 <% end %>
 
-<% content_for :aside do %>
-  <%= render 'articles/social' %>
-  <%= render 'articles/most_commented' %>
-  <%= render 'articles/sidebar_popular' %>
-<% end %>

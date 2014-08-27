@@ -17,7 +17,7 @@ class Article < ActiveRecord::Base
   end
 
   def self.most_comments
-    self.order("comments_count DESC").limit(5)
+    self.order("comments_count DESC").limit(3)
   end
 
   def self.most_favs
